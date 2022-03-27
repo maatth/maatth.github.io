@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://maatth.github.io/sitemap.xml
+Sitemap: https://maatth.github.io/maatth/sitemap.xml
