@@ -191,7 +191,7 @@ This section will show the basic (and most important) set up of TypeScript with 
     "target": "ES5", // <- Javascript version of generated files 
     "strict": true // <- force the dev to specify the type that Typescript can't infer + force the dev to specify if a variable can be null 
   },
-  "include": ["src/**/*"]  // <- ".ts" files (Typescript) that match this path will be converted (here: file.ts)
+  "include": ['src/**/*']  // <- ".ts" files (Typescript) that match this path will be converted (here: file.ts)
 }
 ```
 
