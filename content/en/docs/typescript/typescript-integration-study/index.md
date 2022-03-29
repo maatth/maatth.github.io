@@ -74,8 +74,7 @@ const myPerson: Human = {name: 'George', age: 30};
 which is equivalent to:
 
 ```ts
-const myPerson: {name: string; age: number;} = {name: 'George', age:
-30};
+const myPerson: {name: string; age: number;} = {name: 'George', age:30};
 ```
 
 But it is recommended to write the types/interfaces in external file for better reusability. This file is called a [declaration file](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html) whose extension is "**.d. ts**".
@@ -97,8 +96,7 @@ Sometimes, we do not know the name of the person. So the property name of a cust
 ```ts
  type Person = {
   name?: string;
-  age: number; 
-
+  age: number;
 };
 ```
 
@@ -191,7 +189,7 @@ This section will show the basic (and most important) set up of TypeScript with 
     "target": "ES5", // <- Javascript version of generated files 
     "strict": true // <- force the dev to specify the type that Typescript can't infer + force the dev to specify if a variable can be null 
   },
-  "include": ['src/**/*']  // <- ".ts" files (Typescript) that match this path will be converted (here: file.ts)
+  "include": ["src/** /*"]  // <- ".ts" files (Typescript) that match this path will be converted (here: file.ts)
 }
 ```
 
@@ -293,11 +291,11 @@ worker: babel-watch src/app.js --extensions ".ts,.js"
     "allowJs": true,      // <- replaces the need of declaration file for existing JavaScript code, since ts will try to understand js files
     "noEmit": true,    // <- no code will be converted because ESLint will handle it
     "strict": true,      // <- enable strictest settings like strictNullChecks & noImplicitAny
-    "moduleResolution": "node", // <- specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "moduleResolution": "node", // <- specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6).
     "isolatedModules": true,  // <- disallow features that require cross-file information for emit.
     "esModuleInterop": true,  // <- import non-ES modules as default imports.
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/** /*"],
 }
 ```
 
@@ -359,10 +357,6 @@ module.exports = {
         ecmaversion: 2018,
         sourceType: 'module',
       },
-
-      /**
-       * Typescript Rules
-       */
       rules: {
         '@typescript-eslint/no-explicit-any': 2, //   Severity should be one of the following: 0 = off, 1 = warn, 2 = error
       },
