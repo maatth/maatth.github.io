@@ -1,4 +1,3 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://maatth.github.io/sitemap.xml
+Disallow: /admin/
+Sitemap: /sitemap.xml
