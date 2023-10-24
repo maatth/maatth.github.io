@@ -8,8 +8,7 @@ on:
       - main
 
 jobs:
-  # Build job
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,42 +19,12 @@ jobs:
       - name: Build production website
         run: npm run build
 
-      - uses: actions/upload-artifact@master
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        # If you're changing the branch from main,
+        # also change the `main` in `refs/heads/main`
+        # below accordingly.
+        if: github.ref == 'refs/heads/main'
         with:
-          name: page
-          path: build
-          if-no-files-found: error
-
-  # Deploy job
-  deploy:
-    # Add a dependency to the build job
-    needs: build
-
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
-
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    # Specify runner + deployment step
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@master
-        with:
-          name: page
-          path: .
-      - uses: actions/configure-pages@v1
-      # - name: Fix permissions
-      #   run: |
-      #     chmod -c -R +rX "_site/" | while read line; do
-      #       echo "::warning title=Invalid file permissions automatically fixed::$line"
-      #     done
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v2
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
