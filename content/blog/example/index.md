@@ -1,5 +1,5 @@
 ---
-title: "Example Post"
+title: "Example Post oui"
 description: "Just an example post."
 summary: ""
 date: 2023-09-07T16:27:22+02:00
