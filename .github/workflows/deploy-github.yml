@@ -20,13 +20,11 @@ jobs:
       - name: Build production website
         run: npm run build
 
-      - name: Fix permissions
-        run: |
-          chmod -c -R +rX "_site/" | while read line; do
-            echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v2
+      - uses: actions/upload-artifact@master
+        with:
+          name: page
+          path: build
+          if-no-files-found: error
 
   # Deploy job
   deploy:
@@ -46,6 +44,18 @@ jobs:
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: page
+          path: .
+      - uses: actions/configure-pages@v1
+      # - name: Fix permissions
+      #   run: |
+      #     chmod -c -R +rX "_site/" | while read line; do
+      #       echo "::warning title=Invalid file permissions automatically fixed::$line"
+      #     done
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
+        uses: actions/deploy-pages@v2
