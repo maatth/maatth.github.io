@@ -1,6 +1,6 @@
 title = "My Docs"
-baseurl = "/"
-canonifyURLs = false
+baseurl = "https://maatth.github.io/maatth/"
+canonifyURLs = true
 disableAliases = true
 disableHugoGeneratorInject = true
 # disableKinds = ["taxonomy", "term"]

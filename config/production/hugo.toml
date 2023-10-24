@@ -1,3 +1,1 @@
 # Overrides for production environment
-baseurl = "https://maatth.github.io/maatth/"
-canonifyURLs = true
