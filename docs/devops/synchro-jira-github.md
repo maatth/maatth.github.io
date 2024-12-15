@@ -1,11 +1,13 @@
 ---
 sidebar_position: 1
 ---
-# Contexte
+# Synchronisation jira github
 Imaginons un ticket Jira et une pull request associée. Normalement, la version du ticket Jira et le milestone de la PR doivent correspondre. Mais très souvent, on change la version du ticket Jira sans mettre à jour le milestone. 
+
 # But
 Cette article explique comment synchroniser automatiquement la version et le milestone de la PR correspondante. 
 La synchronisation doit se lancer uniquement en cas de modification de la version (donc pas de cron) et doit être la plus économique possible. 
+
 # Solution
 Un script de synchronisation s'executera sur un runner GitHub car gratuit, sous forme de workflow GitHub actions exploitant l'API Github pour modifier la PR. Le déclencheur sera un Jira automation, car il permet des scénarios complexe comme de faire un appel HTTP lorsqu'un champ spécifique d'un ticket est modifié.
 Nous prendrons comme exemple une version et un milestone qui sont différents (respectivement API-V0.0.1 et v0.0.1).
